@@ -1,3 +1,6 @@
+Installation of tessaract for pyocr
+
+
 http://grimhacker.com/2014/11/23/installing-pytesseract-practically-painless/
 
 Mac:
