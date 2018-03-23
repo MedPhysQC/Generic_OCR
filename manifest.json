@@ -1,0 +1,18 @@
+{
+    "info": {
+        "dbversion": "20180209"
+    },
+    "module": {
+        "description": "OCR Generic",
+        "executable": "ocr_wadwrapper.py",
+        "name": "OCR_Generic",
+        "code": "python",
+        "dependencies": [
+            "pillow",
+            "numpy",
+            "pydicom",
+            "scipy",
+            "pyocr"
+        ]
+    }
+}
