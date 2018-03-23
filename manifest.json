@@ -5,7 +5,7 @@
     "module": {
         "description": "OCR Generic",
         "executable": "ocr_wadwrapper.py",
-        "name": "OCR_Generic",
+        "name": "Generic_OCR",
         "code": "python",
         "dependencies": [
             "pillow",
