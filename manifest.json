@@ -1,6 +1,7 @@
 {
     "info": {
-        "dbversion": "20180209"
+        "dbversion": "20180209",
+        "magic": "wad-qc-factory"
     },
     "module": {
         "description": "OCR Generic",
