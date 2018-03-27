@@ -50,6 +50,12 @@ import ocr_lib
 def logTag():
     return "[OCR_wadwrapper] "
 
+# function for changing RGB image to grayscale
+def rgb2gray(rgb):
+        r, g, b = rgb[:,:,0], rgb[:,:,1], rgb[:,:,2]
+        gray = 0.2989 * r + 0.5870 * g + 0.1140 * b
+        return gray
+
 def readdcm(inputfile, channel, slicenr):
     """
     Use pydicom to read the image. Only implement 2D reading, and do not transpose axes.
@@ -110,6 +116,17 @@ def readdcm(inputfile, channel, slicenr):
                 pixeldataIn += pixel_array[:, :, c]
 
         return dcmInfile, pixeldataIn/channels # ocr_lib expects pixel values 0-255
+    
+    if channel == 'rgb':
+        print('[ocr_lib] Converting RGB-image to grayscale')
+        # weigthed average of RGB data to make grayscale image
+        if len(np.shape(pixel_array)) == 4: #3d multi channel
+            pixeldataIn = pixel_array[slicenr, :, :, :]
+            pixeldataIn=rgb2gray(pixeldataIn)
+        else:
+            pixeldataIn = pixel_array[:, :, :]
+            pixeldataIn=rgb2gray(pixeldataIn)
+        return dcmInfile, pixeldataIn # ocr_lib expects pixel values 0-255
 
     raise ValueError("Data has {} channels. Invalid selected channel {}! Should be a number or 'sum'.".format(channels, channel))
     
