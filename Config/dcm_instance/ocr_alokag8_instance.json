@@ -1,0 +1,36 @@
+{
+    "actions": {
+        "acqdatetime": {
+            "filters": {}, 
+            "params": {}
+        }, 
+        "qc_series": {
+            "filters": {}, 
+            "params": {
+                "OCR_probeID:type": "string", 
+                "OCR_probeID:xywh": "676;167;34;15", 
+                "channel": 2, 
+                "ocr_threshold": 80, 
+                "ocr_zoom": 2
+            }
+        }
+    }, 
+    "comments": {
+        "author": "Arnold Schilham, UMCU", 
+        "creator": "generate_config_json.py version 20180219", 
+        "description": "OCR/Generic for ALOKA G8", 
+        "params": {
+            "OCR_probeID:type": "contents of bounding box of OCR_probeID should be of this type", 
+            "OCR_probeID:xywh": "bounding box of probeID if specified, this will be used as identifier for values, else from dicom headers", 
+            "channel": "convert to RGB by using channel number 0,1,2 or \"sum\", or \"rgb\" (2)", 
+            "ocr_threshold": "threshold on pixel values to remove background gradient (0)", 
+            "ocr_zoom": "zoom factor before ocr analysis (10)"
+        }, 
+        "usage": [
+            "  \"OCR_xxx:prefix\": \"mm\" # text in bounding box of OCR_xxx starts with this and this should be stripped", 
+            "  \"OCR_xxx:suffix\": \"mm\" # text in bounding box of OCR_xxx ends with this and this should be stripped", 
+            "\n"
+        ], 
+        "version": "20180328"
+    }
+}

@@ -20,6 +20,7 @@
 #
 #
 # Changelog:
+#   20180328: Fix reading of US_RGB data using pydicom 1.x; added rgb2gray of JG
 #   20171117: sync with US module; removed data reading by wadwrapper_lib
 #   20161220: removed class variables; removed testing stuff
 #   20160901: first version, combination of TdW, JG, AS
@@ -32,7 +33,7 @@
 #
 from __future__ import print_function
 
-__version__ = '20171117'
+__version__ = '20180328'
 __author__ = 'aschilham'
 
 import os
@@ -50,10 +51,16 @@ import ocr_lib
 def logTag():
     return "[OCR_wadwrapper] "
 
+# function for changing RGB image to grayscale
+def rgb2gray(rgb):
+    r, g, b = rgb[:,:,0], rgb[:,:,1], rgb[:,:,2]
+    gray = 0.2989 * r + 0.5870 * g + 0.1140 * b
+    return gray
+
 def readdcm(inputfile, channel, slicenr):
     """
     Use pydicom to read the image. Only implement 2D reading, and do not transpose axes.
-      channel: either a number in [0, number of channels] or 'sum':
+      channel: either a number in [0, number of channels] or one of 'sum', 'rgb':
           use the given channel only or sum all channels to get a gray scale image.
       slicenr: use the given slicenr if the dicom file contains a 3D image
     """
@@ -72,15 +79,22 @@ def readdcm(inputfile, channel, slicenr):
         return dcmInfile, pixeldataIn
 
     ## multi-channel data
-    # this fix is needed in pydicom < 1.0; maybe solved in later versions?
+    # AS: this fix was only needed in pydicom < 1.0; solved in later versions
     try:
-        nofframes = dcmInfile.NumberOfFrames
-    except AttributeError:
-        nofframes = 1
-    if dcmInfile.PlanarConfiguration==0:
-        pixel_array = pixeldataIn.reshape(nofframes, dcmInfile.Rows, dcmInfile.Columns, dcmInfile.SamplesPerPixel)
+        dicomversion = int(dicom.__version_info__[0])
+    except:
+        dicomversion = 0
+    if dicomversion == 0:
+        try:
+            nofframes = dcmInfile.NumberOfFrames
+        except AttributeError:
+            nofframes = 1
+        if dcmInfile.PlanarConfiguration==0:
+            pixel_array = pixeldataIn.reshape(nofframes, dcmInfile.Rows, dcmInfile.Columns, dcmInfile.SamplesPerPixel)
+        else:
+            pixel_array = pixeldataIn.reshape(dcmInfile.SamplesPerPixel, nofframes, dcmInfile.Rows, dcmInfile.Columns)
     else:
-        pixel_array = pixeldataIn.reshape(dcmInfile.SamplesPerPixel, nofframes, dcmInfile.Rows, dcmInfile.Columns)
+        pixel_array = pixeldataIn 
 
     # first simple cases
     if isinstance(channel, int):
@@ -111,7 +125,17 @@ def readdcm(inputfile, channel, slicenr):
 
         return dcmInfile, pixeldataIn/channels # ocr_lib expects pixel values 0-255
 
-    raise ValueError("Data has {} channels. Invalid selected channel {}! Should be a number or 'sum'.".format(channels, channel))
+    if channel == 'rgb':
+        print('{} Converting RGB-image to grayscale'.format(logTag()))
+        # weigthed average of RGB data to make grayscale image
+        if len(np.shape(pixel_array)) == 4: #3d multi channel
+            pixeldataIn = pixel_array[slicenr, :, :, :]
+        else:
+            pixeldataIn = pixel_array[:, :, :]
+        pixeldataIn = rgb2gray(pixeldataIn)
+        return dcmInfile, pixeldataIn # ocr_lib expects pixel values 0-255
+
+    raise ValueError("Data has {} channels. Invalid selected channel {}! Should be a number or one of 'sum', 'rgb'.".format(channels, channel))
     
     
 def OCR(data, results, action):
