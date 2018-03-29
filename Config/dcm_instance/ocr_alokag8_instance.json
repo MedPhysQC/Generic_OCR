@@ -22,7 +22,7 @@
         "params": {
             "OCR_probeID:type": "contents of bounding box of OCR_probeID should be of this type", 
             "OCR_probeID:xywh": "bounding box of probeID if specified, this will be used as identifier for values, else from dicom headers", 
-            "channel": "convert to RGB by using channel number 0,1,2 or \"sum\", or \"rgb\" (2)", 
+            "channel": "convert to RGB by using channel number 0,1,2 or \"avg\", or \"rgb\" (2)", 
             "ocr_threshold": "threshold on pixel values to remove background gradient (0)", 
             "ocr_zoom": "zoom factor before ocr analysis (10)"
         }, 

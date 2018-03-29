@@ -15,7 +15,7 @@
                 "OCR_Integral:xywh": "882;294;100;25", 
                 "OCR_Label:type": "string", 
                 "OCR_Label:xywh": "64;416;200;25", 
-                "channel": "sum", 
+                "channel": "avg", 
                 "slicenr": -1
             }
         }
@@ -33,7 +33,7 @@
             "OCR_Integral:xywh": "x0;y0;width;height of bounding box", 
             "OCR_Label:type": "result should be interpreted as variable of this type", 
             "OCR_Label:xywh": "x0;y0;width;height of bounding box", 
-            "channel": "which channel to take for multi-channel data; either an integer or 'sum' (sum)", 
+            "channel": "which channel to take for multi-channel data; either an integer or 'avg', or 'rgb' (avg)", 
             "slicenr": "which slice to analyse if enhanced dicom is used (-1)"
         }, 
         "usage": [

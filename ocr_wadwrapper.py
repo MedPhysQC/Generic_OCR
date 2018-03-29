@@ -20,6 +20,7 @@
 #
 #
 # Changelog:
+#   20180329: Changed "sum" value for rgb to "avg" and fixed implementation.
 #   20180328: Fix reading of US_RGB data using pydicom 1.x; added rgb2gray of JG
 #   20171117: sync with US module; removed data reading by wadwrapper_lib
 #   20161220: removed class variables; removed testing stuff
@@ -33,7 +34,7 @@
 #
 from __future__ import print_function
 
-__version__ = '20180328'
+__version__ = '20180329'
 __author__ = 'aschilham'
 
 import os
@@ -60,8 +61,9 @@ def rgb2gray(rgb):
 def readdcm(inputfile, channel, slicenr):
     """
     Use pydicom to read the image. Only implement 2D reading, and do not transpose axes.
-      channel: either a number in [0, number of channels] or one of 'sum', 'rgb':
-          use the given channel only or sum all channels to get a gray scale image.
+      channel: either a number in [0, number of channels] or one of 'avg', 'rgb':
+          use the given channel only or averare all channels, or use rgb2gray to get a 
+          gray scale image.
       slicenr: use the given slicenr if the dicom file contains a 3D image
     """
     dcmInfile = dicom.read_file(inputfile)
@@ -99,7 +101,7 @@ def readdcm(inputfile, channel, slicenr):
     # first simple cases
     if isinstance(channel, int):
         if(channel>=channels or channel<0):
-            raise ValueError("Data has {} channels. Invalid selected channel {}! Should be a number or 'sum'.".format(channels, channel))
+            raise ValueError("Data has {} channels. Invalid selected channel {}!".format(channels, channel))
 
         if len(np.shape(pixel_array)) == 4: #3d multi channel
             if dcmInfile.PlanarConfiguration==0:
@@ -112,14 +114,14 @@ def readdcm(inputfile, channel, slicenr):
         return dcmInfile, pixeldataIn
         
     # special values for channel:
-    if channel == 'sum':
+    if channel == 'avg':
         # add all channels
         if len(np.shape(pixel_array)) == 4: #3d multi channel
-            pixeldataIn = pixel_array[slicenr, :, :, 0]
+            pixeldataIn = pixel_array[slicenr, :, :, 0].astype(float)
             for c in range(1, channels):
                 pixeldataIn += pixel_array[slicenr, :, :, c]
         else:
-            pixeldataIn = pixel_array[:, :, 0]
+            pixeldataIn = pixel_array[:, :, 0].astype(float)
             for c in range(1, channels):
                 pixeldataIn += pixel_array[:, :, c]
 
@@ -135,7 +137,7 @@ def readdcm(inputfile, channel, slicenr):
         pixeldataIn = rgb2gray(pixeldataIn)
         return dcmInfile, pixeldataIn # ocr_lib expects pixel values 0-255
 
-    raise ValueError("Data has {} channels. Invalid selected channel {}! Should be a number or one of 'sum', 'rgb'.".format(channels, channel))
+    raise ValueError("Data has {} channels. Invalid selected channel {}! Should be a number or one of 'avg', 'rgb'.".format(channels, channel))
     
     
 def OCR(data, results, action):
@@ -147,7 +149,7 @@ def OCR(data, results, action):
     except KeyError:
         params = {}
 
-    channel = params.get('channel', 'sum')
+    channel = params.get('channel', 'avg')
     slicenr = params.get('slicenr', -1)
     ocr_threshold = params.get('ocr_threshold', 0)
     ocr_zoom = params.get('ocr_zoom', 10)
