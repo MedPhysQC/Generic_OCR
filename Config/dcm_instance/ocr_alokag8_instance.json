@@ -7,8 +7,10 @@
         "qc_series": {
             "filters": {}, 
             "params": {
-                "OCR_probeID:type": "string", 
-                "OCR_probeID:xywh": "676;167;34;15", 
+                "ocr_regions": {
+                    "probeID:type": "string",
+                    "probeID:xywh": "676;167;34;15"
+                },
                 "channel": 2, 
                 "ocr_threshold": 80, 
                 "ocr_zoom": 2
