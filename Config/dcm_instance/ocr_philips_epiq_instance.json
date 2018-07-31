@@ -7,14 +7,12 @@
         "qc_series": {
             "filters": {}, 
             "params": {
-                "ocr_regions": {
-                    "MechIndex:prefix": "MI",
-                    "MechIndex:type": "float",
-                    "MechIndex:xywh": "913;22;80;25",
-                    "TissueIndex:prefix": "TIS",
-                    "TissueIndex:type": "float",
-                    "TissueIndex:xywh": "822;22;90;25"
-                }
+                "OCR_MechIndex:prefix": "MI", 
+                "OCR_MechIndex:type": "float", 
+                "OCR_MechIndex:xywh": "913;22;80;25", 
+                "OCR_TissueIndex:prefix": "TIS", 
+                "OCR_TissueIndex:type": "float", 
+                "OCR_TissueIndex:xywh": "822;22;90;25"
             }
         }
     }, 
