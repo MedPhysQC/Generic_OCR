@@ -22,10 +22,11 @@ Take care to put the bounding box around only txt, and exclude other objects!
 On Ubuntu 16.04: apt install python-pyocr tesseract-ocr tesseract-ocr-eng
 
 Changelog:
+    20180731: fix error ValueError: assignment destination is read-only for part[part<ocr_threshold] = 0
     20171117: sync with US; prepare for non-transposed data
     20171116: fix scipy version 1.0
 """
-__version__ = '20171117'
+__version__ = '20180731'
 __author__ = 'aschilham'
 
 from PIL import Image
@@ -106,9 +107,9 @@ def OCR(pixeldata, xywh, zpos=0, ocr_zoom=10, ocr_threshold=0, transposed=True):
             pixeldata = np.transpose(pixeldata)
 
     if len(np.shape(pixeldata)) == 3:
-        part = pixeldata[zpos][y:y+height, x:x+width]
+        part = np.array(pixeldata[zpos][y:y+height, x:x+width])
     elif len(np.shape(pixeldata)) == 2:
-        part = pixeldata[y:y+height, x:x+width]
+        part = np.array(pixeldata[y:y+height, x:x+width])
     else:
         raise ValueError('[ocr_lib] Unknown dataformat of %d dimensions'%len(np.shape(pixeldata)))
 
