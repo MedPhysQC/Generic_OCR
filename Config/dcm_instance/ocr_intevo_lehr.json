@@ -7,14 +7,16 @@
         "qc_series": {
             "filters": {}, 
             "params": {
-                "OCR_Detector:prefix": "Detector", 
-                "OCR_Detector:type": "float", 
-                "OCR_Detector:xywh": "25;120;100;25", 
-                "OCR_Integral:suffix": "%", 
-                "OCR_Integral:type": "float", 
-                "OCR_Integral:xywh": "882;294;100;25", 
-                "OCR_Label:type": "string", 
-                "OCR_Label:xywh": "64;416;200;25", 
+                "ocr_regions": {
+                    "Detector:prefix": "Detector",
+                    "Detector:type": "float",
+                    "Detector:xywh": "25;120;100;25",
+                    "Integral Uniformity:suffix": "%",
+                    "Integral Uniformity:type": "float",
+                    "Integral Uniformity:xywh": "882;294;100;25",
+                    "Label:type": "string",
+                    "Label:xywh": "64;416;200;25"
+                },
                 "channel": "avg", 
                 "slicenr": -1
             }

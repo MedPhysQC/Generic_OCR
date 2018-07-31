@@ -153,30 +153,30 @@ def OCR(data, results, action):
     slicenr = params.get('slicenr', -1)
     ocr_threshold = params.get('ocr_threshold', 0)
     ocr_zoom = params.get('ocr_zoom', 10)
+    ocr_regions = params.get('ocr_regions',{})
 
     inputfile = data.series_filelist[0][0] # only single images 
     dcmInfile, pixeldataIn = readdcm(inputfile, channel, slicenr)
 
     # solve ocr params
     regions = {}
-    for k,v in params.items():
+    for k,v in ocr_regions.items():
         #'OCR_TissueIndex:xywh' = 'x;y;w;h'
         #'OCR_TissueIndex:prefix' = 'prefix'
         #'OCR_TissueIndex:suffix' = 'suffix'
-        if k.startswith('OCR_'):
-            split = k.find(':')
-            name = k[:split]
-            stuff = k[split+1:]
-            if not name in regions:
-                regions[name] = {'prefix':'', 'suffix':''}
-            if stuff == 'xywh':
-                regions[name]['xywh'] = [int(p) for p in v.split(';')]
-            elif stuff == 'prefix':
-                regions[name]['prefix'] = v
-            elif stuff == 'suffix':
-                regions[name]['suffix'] = v
-            elif stuff == 'type':
-                regions[name]['type'] = v
+        split = k.find(':')
+        name = k[:split]
+        stuff = k[split+1:]
+        if not name in regions:
+            regions[name] = {'prefix':'', 'suffix':''}
+        if stuff == 'xywh':
+            regions[name]['xywh'] = [int(p) for p in v.split(';')]
+        elif stuff == 'prefix':
+            regions[name]['prefix'] = v
+        elif stuff == 'suffix':
+            regions[name]['suffix'] = v
+        elif stuff == 'type':
+            regions[name]['type'] = v
 
     for name, region in regions.items():
         txt, part = ocr_lib.OCR(pixeldataIn, region['xywh'], ocr_zoom=ocr_zoom, ocr_threshold=ocr_threshold, transposed=False)
