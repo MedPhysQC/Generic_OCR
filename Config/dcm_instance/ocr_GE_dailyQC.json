@@ -1,0 +1,87 @@
+{
+    "actions": {
+        "acqdatetime": {
+            "filters": {},
+            "params": {}
+        },
+        "qc_series": {
+            "filters": {},
+            "params": {
+                "Parameter1:name":"H1_Countrate",
+                "Parameter1:suffix": "Kcts/sec",
+                "Parameter1:type": "float",
+                "Parameter1:xywh": "157;320;130;21",
+                "Parameter2:name":"H1_FWHM",
+                "Parameter2:suffix": "%",
+                "Parameter2:type": "float",
+                "Parameter2:xywh": "157;218;130;21",
+                "Parameter3:name":"H1_Isotope",
+                "Parameter3:type": "string",
+                "Parameter3:xywh": "157;169;130;21",
+                "Parameter4:name":"H1_PeakEnergy",
+                "Parameter4:suffix": "keV",
+                "Parameter4:type": "float",
+                "Parameter4:xywh": "157;194;130;21",
+                "Parameter5:name":"H1_TotalCount",
+                "Parameter5:suffix": "Kcts",
+                "Parameter5:type": "float",
+                "Parameter5:xywh": "157;295;130;21",
+                "Parameter6:name":"H1_uniformityCFOV",
+                "Parameter6:suffix": "%",
+                "Parameter6:type": "float",
+                "Parameter6:xywh": "157;242;130;21",
+                "Parameter7:name":"H1_uniformityUFOV",
+                "Parameter7:suffix": "%",
+                "Parameter7:type": "float",
+                "Parameter7:xywh": "157;267;130;21",
+                "Parameter8:name":"H2_CountRate",
+                "Parameter8:suffix": "Kcts/sec",
+                "Parameter8:type": "float",
+                "Parameter8:xywh": "650;320;110;21",
+                "Parameter9:name":"H2_FWHM",
+                "Parameter9:suffix": "%",
+                "Parameter9:type": "float",
+                "Parameter9:xywh": "650;218;110;21",
+                "Parameter10:name":"H2_Isotope",
+                "Parameter10:type": "string",
+                "Parameter10:xywh": "650;169;110;21",
+                "Parameter11:name":"H2_PeakEnergy",
+                "Parameter11:suffix": "keV",
+                "Parameter11:type": "float",
+                "Parameter11:xywh": "650;194;110;21",
+                "Parameter12:name":"H2_TotalCount",
+                "Parameter12:suffix": "Kcts",
+                "Parameter12:type": "float",
+                "Parameter12:xywh": "650;295;110;21",
+                "Parameter13:name":"H2_uniformityCFOV",
+                "Parameter13:suffix": "%",
+                "Parameter13:type": "float",
+                "Parameter13:xywh": "650;242;110;21",
+                "Parameter14:name":"H2_uniformityUFOV",
+                "Parameter14:suffix": "%",
+                "Parameter14:type": "float",
+                "Parameter14:xywh": "650;267;110;21",
+                "Parameter15:name":"Status",
+                "Parameter15:type": "string",
+                "Parameter15:xywh": "85;31;70;18",
+                "channel": "rgb",
+                "slicenr": -1
+            }
+        }
+    },
+    "comments": {
+        "author": "Jaap Groen, OLVG",
+        "creator": "manual",
+        "description": "config file for readout of dailyQC of GE SPECT-CT systems",
+        "params": {
+            "channel": "which channel to take for multi-channel data; either an integer, 'sum' or 'rgb' (weighted average)",
+            "slicenr": "which slice to analyse if enhanced dicom is used (-1)"
+        },
+        "usage": [
+            "  \"OCR_xxx:prefix\": \"mm\" # text in bounding box of OCR_xxx starts with this and this should be stripped",
+            "  \"OCR_xxx:suffix\": \"mm\" # text in bounding box of OCR_xxx ends with this and this should be stripped",
+            "\n"
+        ],
+        "version": "20180803"
+    }
+}
