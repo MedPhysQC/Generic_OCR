@@ -159,42 +159,47 @@ def OCR(data, results, action):
 
     # solve ocr params
     regions = {}
-    for k,v in params.items():
-        #'OCR_TissueIndex:xywh' = 'x;y;w;h'
-        #'OCR_TissueIndex:prefix' = 'prefix'
-        #'OCR_TissueIndex:suffix' = 'suffix'
-        if k.startswith('OCR_'):
+    for k,v in params.items():       
+        #"Parameter1:name":"H1_Countrate",
+        #"Parameter1:suffix": "Kcts/sec",
+        #"Parameter1:type": "float",
+        #"Parameter1:xywh": "157;320;130;21",
+          
+        if k.startswith('Parameter'):
             split = k.find(':')
-            name = k[:split]
+            p = k[:split]
+            p = p[9:]
             stuff = k[split+1:]
-            if not name in regions:
-                regions[name] = {'prefix':'', 'suffix':''}
+            if not p in regions:
+                regions[p] = {'prefix':'', 'suffix':''}
             if stuff == 'xywh':
-                regions[name]['xywh'] = [int(p) for p in v.split(';')]
+                regions[p]['xywh'] = [int(p) for p in v.split(';')]
             elif stuff == 'prefix':
-                regions[name]['prefix'] = v
+                regions[p]['prefix'] = v
             elif stuff == 'suffix':
-                regions[name]['suffix'] = v
+                regions[p]['suffix'] = v
             elif stuff == 'type':
-                regions[name]['type'] = v
+                regions[p]['type'] = v
+            elif stuff == 'name':
+                regions[p]['name'] = v
 
-    for name, region in regions.items():
+    for p, region in regions.items():
         txt, part = ocr_lib.OCR(pixeldataIn, region['xywh'], ocr_zoom=ocr_zoom, ocr_threshold=ocr_threshold, transposed=False)
         if region['type'] == 'object':
             import scipy
             im = scipy.misc.toimage(part) 
-            fn = '%s.jpg'%name
+            fn = '%s.jpg'%region['name']
             im.save(fn)
-            results.addObject(name, fn)
+            results.addObject(region['name'], fn)
             
         else:
             value = ocr_lib.txt2type(txt, region['type'], region['prefix'],region['suffix'])
             if region['type'] == 'float':
-                results.addFloat(name, value)
+                results.addFloat(region['name'], value)
             elif region['type'] == 'string':
-                results.addString(name, value)
+                results.addString(region['name'], value)
             elif region['type'] == 'bool':
-                results.addBool(name, value)
+                results.addBool(region['name'], value)
 
 def acqdatetime_series(data, results, action):
     """
