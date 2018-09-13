@@ -1,5 +1,7 @@
 # Generic_OCR
 
+See [Wiki](../../wiki) for documentation.
+
 ## Dependencies
 This module makes use of pyocr, which uses tesseract.
 
