@@ -20,27 +20,35 @@
             }
         }
     }, 
+    "cfgformat": "20180910", 
     "comments": {
         "author": "Arnold Schilham, UMCU", 
-        "creator": "generate_config_json.py version 20180219", 
+        "creator": "generate_config_json.py version 20180912", 
         "description": "OCR/Generic for Intevo_LEHR", 
-        "params": {
-            "OCR_Detector:prefix": "text in box starts with this and this should be stripped", 
-            "OCR_Detector:type": "result should be interpreted as variable of this type", 
-            "OCR_Detector:xywh": "x0;y0;width;height of bounding box", 
-            "OCR_Integral:suffix": "text in box ends with this and this should be stripped", 
-            "OCR_Integral:type": "result should be interpreted as variable of this type", 
-            "OCR_Integral:xywh": "x0;y0;width;height of bounding box", 
-            "OCR_Label:type": "result should be interpreted as variable of this type", 
-            "OCR_Label:xywh": "x0;y0;width;height of bounding box", 
-            "channel": "which channel to take for multi-channel data; either an integer or 'avg', or 'rgb' (avg)", 
-            "slicenr": "which slice to analyse if enhanced dicom is used (-1)"
-        }, 
         "usage": [
             "  \"OCR_xxx:prefix\": \"mm\" # text in bounding box of OCR_xxx starts with this and this should be stripped", 
             "  \"OCR_xxx:suffix\": \"mm\" # text in bounding box of OCR_xxx ends with this and this should be stripped", 
             "\n"
         ], 
         "version": "20180209"
+    }, 
+    "info": {
+        "acqdatetime": {
+            "params": {}
+        }, 
+        "qc_series": {
+            "params": {
+                "OCR_Detector:prefix": "text in box starts with this and this should be stripped", 
+                "OCR_Detector:type": "result should be interpreted as variable of this type", 
+                "OCR_Detector:xywh": "x0;y0;width;height of bounding box", 
+                "OCR_Integral:suffix": "text in box ends with this and this should be stripped", 
+                "OCR_Integral:type": "result should be interpreted as variable of this type", 
+                "OCR_Integral:xywh": "x0;y0;width;height of bounding box", 
+                "OCR_Label:type": "result should be interpreted as variable of this type", 
+                "OCR_Label:xywh": "x0;y0;width;height of bounding box", 
+                "channel": "which channel to take for multi-channel data; either an integer or 'avg', or 'rgb' (avg)", 
+                "slicenr": "which slice to analyse if enhanced dicom is used (-1)"
+            }
+        }
     }
 }
