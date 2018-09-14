@@ -7,15 +7,23 @@
         "qc_series": {
             "filters": {}, 
             "params": {
-                "OCR_Detector:prefix": "Detector", 
-                "OCR_Detector:type": "float", 
-                "OCR_Detector:xywh": "25;120;100;25", 
-                "OCR_Integral:suffix": "%", 
-                "OCR_Integral:type": "float", 
-                "OCR_Integral:xywh": "882;294;100;25", 
-                "OCR_Label:type": "string", 
-                "OCR_Label:xywh": "64;416;200;25", 
                 "channel": "avg", 
+                "ocr_regions": {
+                    "Detector": {
+                        "prefix": "Detector", 
+                        "type": "float", 
+                        "xywh": "25;120;100;25"
+                    }, 
+                    "Integral": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "882;294;100;25"
+                    }, 
+                    "Label": {
+                        "type": "string", 
+                        "xywh": "64;416;200;25"
+                    }
+                }, 
                 "slicenr": -1
             }
         }
@@ -38,15 +46,23 @@
         }, 
         "qc_series": {
             "params": {
-                "OCR_Detector:prefix": "text in box starts with this and this should be stripped", 
-                "OCR_Detector:type": "result should be interpreted as variable of this type", 
-                "OCR_Detector:xywh": "x0;y0;width;height of bounding box", 
-                "OCR_Integral:suffix": "text in box ends with this and this should be stripped", 
-                "OCR_Integral:type": "result should be interpreted as variable of this type", 
-                "OCR_Integral:xywh": "x0;y0;width;height of bounding box", 
-                "OCR_Label:type": "result should be interpreted as variable of this type", 
-                "OCR_Label:xywh": "x0;y0;width;height of bounding box", 
                 "channel": "which channel to take for multi-channel data; either an integer or 'avg', or 'rgb' (avg)", 
+                "ocr_regions": {
+                    "Detector": {
+                        "prefix": "text in box starts with this and this should be stripped", 
+                        "type": "result should be interpreted as variable of this type", 
+                        "xywh": "x0;y0;width;height of bounding box"
+                    }, 
+                    "Integral": {
+                        "suffix": "text in box ends with this and this should be stripped", 
+                        "type": "result should be interpreted as variable of this type", 
+                        "xywh": "x0;y0;width;height of bounding box"
+                    }, 
+                    "Label": {
+                        "type": "result should be interpreted as variable of this type", 
+                        "xywh": "x0;y0;width;height of bounding box"
+                    }
+                }, 
                 "slicenr": "which slice to analyse if enhanced dicom is used (-1)"
             }
         }

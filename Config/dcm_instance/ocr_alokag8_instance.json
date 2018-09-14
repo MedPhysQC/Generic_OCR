@@ -7,9 +7,13 @@
         "qc_series": {
             "filters": {}, 
             "params": {
-                "OCR_probeID:type": "string", 
-                "OCR_probeID:xywh": "676;167;34;15", 
                 "channel": 2, 
+                "ocr_regions": {
+                    "probeID": {
+                        "type": "string", 
+                        "xywh": "676;167;34;15"
+                    }
+                }, 
                 "ocr_threshold": 80, 
                 "ocr_zoom": 2
             }
@@ -33,9 +37,13 @@
         }, 
         "qc_series": {
             "params": {
-                "OCR_probeID:type": "contents of bounding box of OCR_probeID should be of this type", 
-                "OCR_probeID:xywh": "bounding box of probeID if specified, this will be used as identifier for values, else from dicom headers", 
                 "channel": "convert to RGB by using channel number 0,1,2 or \"avg\", or \"rgb\" (2)", 
+                "ocr_regions": {
+                    "probeID": {
+                        "type": "contents of bounding box of OCR_probeID should be of this type", 
+                        "xywh": "bounding box of probeID if specified, this will be used as identifier for values, else from dicom headers"
+                    }
+                }, 
                 "ocr_threshold": "threshold on pixel values to remove background gradient (0)", 
                 "ocr_zoom": "zoom factor before ocr analysis (10)"
             }

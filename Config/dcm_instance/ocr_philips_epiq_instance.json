@@ -7,12 +7,18 @@
         "qc_series": {
             "filters": {}, 
             "params": {
-                "OCR_MechIndex:prefix": "MI", 
-                "OCR_MechIndex:type": "float", 
-                "OCR_MechIndex:xywh": "913;22;80;25", 
-                "OCR_TissueIndex:prefix": "TIS", 
-                "OCR_TissueIndex:type": "float", 
-                "OCR_TissueIndex:xywh": "822;22;90;25"
+                "ocr_regions": {
+                    "MechIndex": {
+                        "prefix": "MI", 
+                        "type": "float", 
+                        "xywh": "913;22;80;25"
+                    }, 
+                    "TissueIndex": {
+                        "prefix": "TIS", 
+                        "type": "float", 
+                        "xywh": "822;22;90;25"
+                    }
+                }
             }
         }
     }, 
@@ -34,12 +40,18 @@
         }, 
         "qc_series": {
             "params": {
-                "OCR_MechIndex:prefix": "text in bounding box of OCR_MechIndex starts with this", 
-                "OCR_MechIndex:type": "contents minus prefix of bounding box of OCR_MechIndex should be of this type", 
-                "OCR_MechIndex:xywh": "x0;y0;width;height of bounding box of OCR_MechIndex", 
-                "OCR_TissueIndex:prefix": "text in bounding box of OCR_TissueIndex starts with this", 
-                "OCR_TissueIndex:type": "contents minus prefix of bounding box of OCR_TissueIndex should be of this type", 
-                "OCR_TissueIndex:xywh": "x0;y0;width;height of bounding box of OCR_TissueIndex"
+                "ocr_regions": {
+                    "MechIndex": {
+                        "prefix": "text in bounding box starts with this", 
+                        "type": "contents (minus prefix) of bounding box should be of this type", 
+                        "xywh": "x0;y0;width;height of bounding box"
+                    }, 
+                    "TissueIndex": {
+                        "prefix": "text in bounding box starts with this", 
+                        "type": "contents (minus prefix) of bounding box should be of this type", 
+                        "xywh": "x0;y0;width;height of bounding box"
+                    }
+                }
             }
         }
     }
