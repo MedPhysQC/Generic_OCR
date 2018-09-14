@@ -1,0 +1,65 @@
+{
+    "comments": {
+        "author": "Arnold Schilham, UMCU", 
+        "creator": "generate_config_json.py version 20180912", 
+        "description": "SPECT/NEMA_Uniformity for Siemens Symbia T2"
+    }, 
+    "metaformat": "20180910", 
+    "results": {
+        "AcquisitionDateTime": {
+            "constraint_period": 14, 
+            "description": "date and time of acquisition", 
+            "display_level": 2, 
+            "display_name": "DateTime", 
+            "units": ""
+        }, 
+        "det1_DU_x (UFOV)": {
+            "constraint_minlowhighmax": [
+                0, 
+                0, 
+                5, 
+                8
+            ], 
+            "description": "det1_DU_x (UFOV)", 
+            "display_level": 2, 
+            "display_name": "det1 DU x", 
+            "units": ""
+        }, 
+        "det1_DU_y (UFOV)": {
+            "constraint_minlowhighmax": [
+                0, 
+                0, 
+                5, 
+                8
+            ], 
+            "description": "det1_DU_y (UFOV)", 
+            "display_level": 2, 
+            "display_name": "det1 DU y", 
+            "units": ""
+        }, 
+        "det2_DU_x (UFOV)": {
+            "constraint_minlowhighmax": [
+                0, 
+                0, 
+                5, 
+                8
+            ], 
+            "description": "det2_DU_x (UFOV)", 
+            "display_level": 2, 
+            "display_name": "det2 DU x", 
+            "units": ""
+        }, 
+        "det2_DU_y (UFOV)": {
+            "constraint_minlowhighmax": [
+                0, 
+                0, 
+                5, 
+                8
+            ], 
+            "description": "det2_DU_y (UFOV)", 
+            "display_level": 2, 
+            "display_name": "det2 DU y", 
+            "units": ""
+        }
+    }
+}

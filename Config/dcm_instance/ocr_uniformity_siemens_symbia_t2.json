@@ -1,0 +1,41 @@
+{
+    "actions": {
+        "acqdatetime": {
+            "filters": {}, 
+            "params": {}
+        }, 
+        "qc_series": {
+            "filters": {
+                "seriesdescription": "Extrinsic Sweep Verification Flood [Extrinsic Sweep]"
+            }, 
+            "params": {
+                "description": "SPECT Siemens cfg", 
+                "function": "unif1", 
+                "instancetag": "0008,0060", 
+                "modality": "NM", 
+                "name": "SPECT Siemens SymbiaT2", 
+                "perform_dome_correction": "0", 
+                "version": "20150429"
+            }
+        }
+    }, 
+    "cfgformat": "20180910", 
+    "comments": {
+        "TODO": {
+            "configtagvalues": "params", 
+            "function": "NM.NM_NEMA_Uniformity.QCUnif_wadwrapper.nm_uniformity"
+        }, 
+        "author": "Arnold Schilham, UMCU", 
+        "creator": "generate_config_json.py version 20180912", 
+        "description": "SPECT/NEMA_Uniformity for Siemens Symbia T2", 
+        "version": "20160413"
+    }, 
+    "info": {
+        "acqdatetime": {
+            "params": {}
+        }, 
+        "qc_series": {
+            "params": {}
+        }
+    }
+}
