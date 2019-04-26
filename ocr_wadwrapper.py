@@ -12,11 +12,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# PyWAD is open-source software and consists of a set of modules written in python for the WAD-Software medical physics quality control software. 
-# The WAD Software can be found on https://github.com/wadqc
-# 
-# The pywad package includes modules for the automated analysis of QC images for various imaging modalities. 
-# PyWAD has been originaly initiated by Dennis Dickerscheid (AZN), Arnold Schilham (UMCU), Rob van Rooij (UMCU) and Tim de Wit (AMC) 
+# This code is an analysis module for WAD-QC 2.0: a server for automated 
+# analysis of medical images for quality control.
+#
+# The WAD-QC Software can be found on 
+# https://bitbucket.org/MedPhysNL/wadqc/wiki/Home
 #
 #
 # Changelog:
