@@ -1,0 +1,203 @@
+{
+  "results": {
+    "OCR_H2_FWHM": {
+      "description": "H2 FWHM",
+      "decimals": null,
+      "display_position": null,
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        11,
+        12
+      ],
+      "display_name": "H2 FWHM",
+      "units": "%",
+      "display_level": 2
+    },
+    "OCR_H2_Isotope": {
+      "description": null,
+      "display_level": 0,
+      "decimals": null,
+      "display_name": "H2 Isotope",
+      "constraint_is_active": false,
+      "display_position": null,
+      "units": null
+    },
+    "OCR_H2_PeakEnergy": {
+      "constraint_is_active": true,
+      "description": "peak H2",
+      "decimals": null,
+      "display_position": null,
+      "constraint_minlowhighmax": [
+        119,
+        121,
+        123,
+        125
+      ],
+      "display_name": "H2 PeakEnergy",
+      "units": "kEV",
+      "display_level": 2
+    },
+    "OCR_H1_FWHM": {
+      "constraint_is_active": true,
+      "description": "H1 FWHM",
+      "decimals": null,
+      "display_position": null,
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        11,
+        12
+      ],
+      "display_name": "H1 FWHM",
+      "units": "%",
+      "display_level": 2
+    },
+    "OCR_H2_uniformityCFOV": {
+      "constraint_is_active": true,
+      "description": "CFOV uniformity of head 2",
+      "decimals": null,
+      "display_position": null,
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4.5,
+        5
+      ],
+      "display_name": "H2 CFOV",
+      "units": "%",
+      "display_level": 2
+    },
+    "OCR_Status": {
+      "constraint_is_active": true,
+      "description": "Overal status of the report",
+      "constraint_equals": "Passed",
+      "decimals": null,
+      "display_position": null,
+      "display_name": "status",
+      "units": "",
+      "display_level": 2
+    },
+    "AcquisitionDateTime": {
+      "constraint_is_active": true,
+      "description": "date and time of acquisition",
+      "constraint_period": 5,
+      "decimals": null,
+      "display_position": null,
+      "display_name": "DateTime",
+      "units": "",
+      "display_level": 2
+    },
+    "OCR_H1_CountRate": {
+      "description": "",
+      "display_level": "1",
+      "decimals": "",
+      "constraint_is_active": false,
+      "display_name": "H1 Countrate",
+      "display_position": "",
+      "units": "Kcts/sec"
+    },
+    "OCR_H1_TotalCount": {
+      "description": null,
+      "display_level": 0,
+      "decimals": null,
+      "constraint_is_active": false,
+      "display_name": "H1 Total counts",
+      "display_position": null,
+      "units": "Kcts"
+    },
+    "OCR_H2_uniformityUFOV": {
+      "constraint_is_active": true,
+      "description": "H2 UFOV",
+      "decimals": null,
+      "display_position": null,
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        5,
+        5.5
+      ],
+      "display_name": "H2 UFOV",
+      "units": "%",
+      "display_level": 2
+    },
+    "OCR_H1_uniformityUFOV": {
+      "constraint_is_active": true,
+      "description": "H1 UFOV",
+      "decimals": null,
+      "display_position": null,
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        5,
+        5.5
+      ],
+      "display_name": "H1 UFOV",
+      "units": "%",
+      "display_level": 2
+    },
+    "OCR_H1_Isotope": {
+      "description": null,
+      "display_level": 0,
+      "decimals": null,
+      "display_name": "H1 Isotope",
+      "constraint_is_active": false,
+      "display_position": null,
+      "units": null
+    },
+    "OCR_H1_uniformityCFOV": {
+      "constraint_is_active": true,
+      "description": "CFOV uniformity of head 1",
+      "decimals": null,
+      "display_position": null,
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4.5,
+        5
+      ],
+      "display_name": "H1 CFOV",
+      "units": "%",
+      "display_level": 2
+    },
+    "OCR_H2_TotalCount": {
+      "description": null,
+      "display_level": 0,
+      "decimals": null,
+      "constraint_is_active": false,
+      "display_name": "H2 Total counts",
+      "display_position": null,
+      "units": "Kcts"
+    },
+    "OCR_H1_PeakEnergy": {
+      "constraint_is_active": true,
+      "description": "peak H1",
+      "decimals": null,
+      "display_position": null,
+      "constraint_minlowhighmax": [
+        119,
+        121,
+        123,
+        125
+      ],
+      "display_name": "H1 PeakEnergy",
+      "units": "kEV",
+      "display_level": 2
+    },
+    "OCR_H2_CountRate": {
+      "description": null,
+      "display_level": 0,
+      "decimals": null,
+      "constraint_is_active": false,
+      "display_name": "H2 Countrate",
+      "display_position": null,
+      "units": "Kcts/sec"
+    }
+  },
+  "comments": {
+    "description": "meta for OCR GE DailyQC report",
+    "author": "Jaap Groen, OLVG",
+    "creator": "custom"
+  },
+  "metaformat": "20180910"
+}
