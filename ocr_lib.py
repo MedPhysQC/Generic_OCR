@@ -22,11 +22,12 @@ Take care to put the bounding box around only txt, and exclude other objects!
 On Ubuntu 16.04: apt install python-pyocr tesseract-ocr tesseract-ocr-eng
 
 Changelog:
+    20180914: tesseract wants black text on white
     20180731: fix error ValueError: assignment destination is read-only for part[part<ocr_threshold] = 0
     20171117: sync with US; prepare for non-transposed data
     20171116: fix scipy version 1.0
 """
-__version__ = '20180731'
+__version__ = '20180914'
 __author__ = 'aschilham'
 
 from PIL import Image
@@ -50,8 +51,7 @@ def getOCRTool():
     tool = tools[0]
     print("[ocr_lib] Using %s for OCR" % (tool.get_name()))
     return tool
-
-
+    
 def txt2type(txt, type, prefix='',suffix=''):
     """
     If prefix is defined, the length of the string is used to skip the first num characters.
@@ -144,5 +144,9 @@ def OCR(pixeldata, xywh, zpos=0, ocr_zoom=10, ocr_threshold=0, transposed=True):
     ##import pytesseract
     ##txt = pytesseract.image_to_string(Image.fromarray(part))
     
+    # 20180914: actually tesseract wants black text on white, so invert!
+    maxval = np.max(part)
+    part = maxval-part
+
     txt = tool.image_to_string(Image.fromarray(part))
     return txt, part

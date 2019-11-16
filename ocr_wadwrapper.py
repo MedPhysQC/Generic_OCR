@@ -12,14 +12,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# PyWAD is open-source software and consists of a set of modules written in python for the WAD-Software medical physics quality control software. 
-# The WAD Software can be found on https://github.com/wadqc
-# 
-# The pywad package includes modules for the automated analysis of QC images for various imaging modalities. 
-# PyWAD has been originaly initiated by Dennis Dickerscheid (AZN), Arnold Schilham (UMCU), Rob van Rooij (UMCU) and Tim de Wit (AMC) 
+# This code is an analysis module for WAD-QC 2.0: a server for automated 
+# analysis of medical images for quality control.
+#
+# The WAD-QC Software can be found on 
+# https://bitbucket.org/MedPhysNL/wadqc/wiki/Home
 #
 #
 # Changelog:
+#   20180913: new format of config: ocr_regions = {name: {prefix:, suffix:, type:, xywh}}; 
+#             tesseract wants black text on white
 #   20180329: Changed "sum" value for rgb to "avg" and fixed implementation.
 #   20180328: Fix reading of US_RGB data using pydicom 1.x; added rgb2gray of JG
 #   20171117: sync with US module; removed data reading by wadwrapper_lib
@@ -34,7 +36,7 @@
 #
 from __future__ import print_function
 
-__version__ = '20180329'
+__version__ = '20180913'
 __author__ = 'aschilham'
 
 import os
@@ -48,6 +50,12 @@ except ImportError:
 
 import numpy as np
 import ocr_lib
+import scipy.misc
+# sanity check: we need at least scipy 0.10.1 to avoid problems mixing PIL and Pillow
+scipy_version = [int(v) for v in scipy.__version__ .split('.')]
+if scipy_version[0] == 0:
+    if scipy_version[1]<10 or (scipy_version[1] == 10 and scipy_version[1]<1):
+        raise RuntimeError("scipy version too old. Upgrade scipy to at least 0.10.1")
 
 def logTag():
     return "[OCR_wadwrapper] "
@@ -153,53 +161,41 @@ def OCR(data, results, action):
     slicenr = params.get('slicenr', -1)
     ocr_threshold = params.get('ocr_threshold', 0)
     ocr_zoom = params.get('ocr_zoom', 10)
-
+    ocr_regions = params.get('ocr_regions',{}) # new format
+    
     inputfile = data.series_filelist[0][0] # only single images 
     dcmInfile, pixeldataIn = readdcm(inputfile, channel, slicenr)
 
     # solve ocr params
     regions = {}
-    for k,v in params.items():       
-        #"Parameter1:name":"H1_Countrate",
-        #"Parameter1:suffix": "Kcts/sec",
-        #"Parameter1:type": "float",
-        #"Parameter1:xywh": "157;320;130;21",
-          
-        if k.startswith('Parameter'):
-            split = k.find(':')
-            p = k[:split]
-            p = p[9:]
-            stuff = k[split+1:]
-            if not p in regions:
-                regions[p] = {'prefix':'', 'suffix':''}
-            if stuff == 'xywh':
-                regions[p]['xywh'] = [int(p) for p in v.split(';')]
-            elif stuff == 'prefix':
-                regions[p]['prefix'] = v
-            elif stuff == 'suffix':
-                regions[p]['suffix'] = v
-            elif stuff == 'type':
-                regions[p]['type'] = v
-            elif stuff == 'name':
-                regions[p]['name'] = v
+    for ocrname,ocrparams in ocr_regions.items():
+        regions[ocrname] = {'prefix':'', 'suffix':''}
+        for key,val in ocrparams.items():
+            if key == 'xywh':
+                regions[ocrname]['xywh'] = [int(p) for p in val.split(';')]
+            elif key == 'prefix':
+                regions[ocrname]['prefix'] = val
+            elif key == 'suffix':
+                regions[ocrname]['suffix'] = val
+            elif key == 'type':
+                regions[ocrname]['type'] = val
 
-    for p, region in regions.items():
+    for name, region in regions.items():
         txt, part = ocr_lib.OCR(pixeldataIn, region['xywh'], ocr_zoom=ocr_zoom, ocr_threshold=ocr_threshold, transposed=False)
         if region['type'] == 'object':
-            import scipy
             im = scipy.misc.toimage(part) 
-            fn = '%s.jpg'%region['name']
+            fn = '%s.jpg'%name
             im.save(fn)
-            results.addObject(region['name'], fn)
+            results.addObject(name, fn)
             
         else:
             value = ocr_lib.txt2type(txt, region['type'], region['prefix'],region['suffix'])
             if region['type'] == 'float':
-                results.addFloat(region['name'], value)
+                results.addFloat(name, value)
             elif region['type'] == 'string':
-                results.addString(region['name'], value)
+                results.addString(name, value)
             elif region['type'] == 'bool':
-                results.addBool(region['name'], value)
+                results.addBool(name, value)
 
 def acqdatetime_series(data, results, action):
     """
