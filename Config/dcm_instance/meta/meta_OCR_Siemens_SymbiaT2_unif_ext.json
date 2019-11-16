@@ -1,0 +1,113 @@
+{
+  "comments": {
+    "description": "config OCR/Generic for Siemens SymbiaT2 Uniformity Extrinsic report",
+    "SeriesDescription": "Extrinsic Sweep Save Screen",
+    "author": "Jaap Groen, OLVG"
+  },
+  "metaformat": "20180910",
+  "results": {
+    "OCR_H1_CFOV_int": {
+      "display_level": 2,
+      "units": "%",
+      "description": "H1 CFOV int",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4,
+        5
+      ],
+      "display_name": "H1 CFOV int"
+    },
+    "OCR_H2_UFOV_int": {
+      "display_level": 2,
+      "units": "%",
+      "description": "H2 UFOV int",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4,
+        5
+      ],
+      "display_name": "H2 UFOV int"
+    },
+    "OCR_H1_UFOV_int": {
+      "display_level": 2,
+      "units": "%",
+      "description": "H1 UFOV int",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4,
+        5
+      ],
+      "display_name": "H1 UFOV int"
+    },
+    "OCR_H2_UFOV_diff": {
+      "display_level": 2,
+      "units": "%",
+      "description": "H2 UFOV diff",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        3,
+        4
+      ],
+      "display_name": "H2 UFOV diff"
+    },
+    "AcquisitionDateTime": {
+      "display_level": 2,
+      "units": "",
+      "constraint_period": 5,
+      "description": "date and time of acquisition",
+      "display_name": "DateTime"
+    },
+    "OCR_H1_UFOV_diff": {
+      "display_level": 2,
+      "units": "%",
+      "description": "H1 UFOV diff",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        3,
+        4
+      ],
+      "display_name": "H1 UFOV diff"
+    },
+    "OCR_H2_CFOV_int": {
+      "display_level": 2,
+      "units": "%",
+      "description": "H2 CFOV int",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4,
+        5
+      ],
+      "display_name": "H2 CFOV int"
+    },
+    "OCR_H2_CFOV_diff": {
+      "display_level": 2,
+      "units": "%",
+      "description": "H2 CFOV diff",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        3,
+        4
+      ],
+      "display_name": "H2 CFOV diff"
+    },
+    "OCR_H1_CFOV_diff": {
+      "display_level": 2,
+      "units": "%",
+      "description": "H1 CFOV diff",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        3,
+        4
+      ],
+      "display_name": "H1 CFOV diff"
+    }
+  }
+}

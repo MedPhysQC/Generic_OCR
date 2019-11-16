@@ -1,0 +1,65 @@
+{
+    "actions": {
+        "acqdatetime": {
+            "filters": {}, 
+            "params": {}
+        }, 
+        "qc_series": {
+            "filters": {}, 
+            "params": {
+                "channel": "rgb",
+                "ocr_threshold":0,
+                "ocr_regions": {
+                    "H1_CFOV_diff": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "884;350;60;40"
+                    },
+                    "H2_CFOV_diff": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "884;690;60;40"
+                    },
+                    "H1_CFOV_int": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "884;290;60;40"
+                    },
+                    "H2_CFOV_int": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "884;640;60;40"
+                    },                    
+                    "H1_UFOV_diff": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "1000;350;60;40"
+                    },
+                    "H2_UFOV_diff": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "1000;690;60;40"
+                    },
+                    "H1_UFOV_int": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "1000;290;60;40"
+                    },
+                    "H2_UFOV_int": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "1000;640;60;40"
+                    }
+                }, 
+                "slicenr": -1
+            }
+        }
+    }, 
+    "cfgformat": "20180910", 
+    "comments": {
+        "author": "Jaap Groen, OLVG",  
+        "description": "config OCR/Generic for Siemens SymbiaT2 Uniformity Intrinsic report",
+        "SeriesDescription": "Intrinsic Verification Save Screen",
+        "version": "20180209"
+    }
+}

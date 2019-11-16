@@ -1,0 +1,114 @@
+{
+  "results": {
+    "H2_CFOV_int": {
+      "units": "%",
+      "display_name": "H2 CFOV int",
+      "display_level": 2,
+      "description": "H2 CFOV int",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4,
+        5
+      ]
+    },
+    "AcquisitionDateTime": {
+      "constraint_period": 3,
+      "units": "",
+      "display_level": 2,
+      "description": "date and time of acquisition",
+      "display_name": "DateTime"
+    },
+    "H2_CFOV_diff": {
+      "units": "%",
+      "display_name": "H2 CFOV diff",
+      "display_level": 2,
+      "description": "H2 CFOV diff",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        3,
+        4
+      ]
+    },
+    "H1_UFOV_diff": {
+      "units": "%",
+      "display_name": "H1 UFOV diff",
+      "display_level": 2,
+      "description": "H1 UFOV diff",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        3,
+        4
+      ]
+    },
+    "H2_UFOV_diff": {
+      "units": "%",
+      "display_name": "H2 UFOV diff",
+      "display_level": 2,
+      "description": "H2 UFOV diff",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        3,
+        4
+      ]
+    },
+    "H1_CFOV_int": {
+      "units": "%",
+      "display_name": "H1 CFOV int",
+      "display_level": 2,
+      "description": "H1 CFOV int",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4,
+        5
+      ]
+    },
+    "H1_CFOV_diff": {
+      "units": "%",
+      "display_name": "H1 CFOV diff",
+      "display_level": 2,
+      "description": "H1 CFOV diff",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        3,
+        4
+      ]
+    },
+    "H1_UFOV_int": {
+      "units": "%",
+      "display_name": "H1 UFOV int",
+      "display_level": 2,
+      "description": "H1 UFOV int",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4,
+        5
+      ]
+    },
+    "H2_UFOV_int": {
+      "units": "%",
+      "display_name": "H2 UFOV int",
+      "display_level": 2,
+      "description": "H2 UFOV int",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4,
+        5
+      ]
+    }
+  },
+  "metaformat": "20180910",
+  "comments": {
+    "author": "Jaap Groen, OLVG",
+    "description": "config OCR/Generic for Siemens SymbiaT2 Uniformity Intrinsic report",
+    "SeriesDescription": "Intrinsic Verification Save Screen",
+    "creator": "custom"
+  }
+}

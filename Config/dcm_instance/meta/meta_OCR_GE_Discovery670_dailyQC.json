@@ -1,0 +1,146 @@
+{
+  "results": {
+    "H1_TotalCount": {
+      "display_name": "H1 Total counts",
+      "units": "Kcts",
+      "display_level": 2
+    },
+    "H2_PeakEnergy": {
+      "description": "peak H2",
+      "constraint_minlowhighmax": [
+        119,
+        121,
+        123,
+        125
+      ],
+      "units": "kEV",
+      "display_name": "H2 PeakEnergy",
+      "display_level": 1
+    },
+    "H2_FWHM": {
+      "description": "H2 FWHM",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        11,
+        12
+      ],
+      "units": "%",
+      "display_name": "H2 FWHM",
+      "display_level": 1
+    },
+    "H2_uniformityUFOV": {
+      "description": "H2 UFOV",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        5,
+        5.5
+      ],
+      "units": "%",
+      "display_name": "H2 UFOV",
+      "display_level": 1
+    },
+    "H1_Isotope": {
+      "display_name": "H1 Isotope"
+    },
+    "H2_uniformityCFOV": {
+      "description": "CFOV uniformity of head 2",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4.5,
+        5
+      ],
+      "units": "%",
+      "display_name": "H2 CFOV",
+      "display_level": 1
+    },
+    "H1_PeakEnergy": {
+      "description": "peak H1",
+      "constraint_minlowhighmax": [
+        119,
+        121,
+        123,
+        125
+      ],
+      "units": "kEV",
+      "display_name": "H1 PeakEnergy",
+      "display_level": 1
+    },
+    "H1_uniformityCFOV": {
+      "description": "CFOV uniformity of head 1",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        4.5,
+        5
+      ],
+      "units": "%",
+      "display_name": "H1 CFOV",
+      "display_level": 1
+    },
+    "H2_Isotope": {
+      "display_name": "H2 Isotope"
+    },
+    "H1_uniformityUFOV": {
+      "description": "H1 UFOV",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        5,
+        5.5
+      ],
+      "units": "%",
+      "display_name": "H1 UFOV",
+      "display_level": 2
+    },
+    "H2_TotalCount": {
+      "display_name": "H2 Total counts",
+      "units": "Kcts",
+      "display_level": 2
+    },
+    "AcquisitionDateTime": {
+      "constraint_period": 5,
+      "description": "date and time of acquisition",
+      "units": "",
+      "display_name": "DateTime",
+      "display_level": 1
+    },
+    "H2_CountRate": {
+      "display_name": "H2 Countrate",
+      "units": "Kcts/sec",
+      "display_level": 2
+    },
+    "Status": {
+      "units": "",
+      "description": "Overal status of the report",
+      "constraint_equals": "Passed",
+      "display_name": "status",
+      "display_level": 1
+    },
+    "H1_CountRate": {
+      "display_name": "H1 Countrate",
+      "units": "Kcts/sec",
+      "display_level": 2
+    },
+    "H1_FWHM": {
+      "description": "H1 FWHM",
+      "constraint_minlowhighmax": [
+        0,
+        0,
+        11,
+        12
+      ],
+      "units": "%",
+      "display_name": "H1 FWHM",
+      "display_level": 1
+    }
+  },
+  "comments": {
+    "description": "meta config OCR/Generic for GE Discovery670 daily QC report",
+    "SeriesDescription": "ImageQC report",
+    "author": "Jaap Groen, OLVG"
+  },
+  "metaformat": "20180910"
+}
