@@ -1,0 +1,97 @@
+{
+    "actions": {
+        "acqdatetime": {
+            "filters": {}, 
+            "params": {}
+        }, 
+        "qc_series": {
+            "filters": {}, 
+            "params": {
+                "channel": "rgb",
+                "ocr_threshold":0,
+                "ocr_regions": {
+                    "Status": {
+                        "type": "string", 
+                        "xywh": "85;31;70;18"
+                    },
+                    "H1_Isotope": {
+                        "type": "string", 
+                        "xywh": "157;169;130;21"
+                    },
+                    "H2_Isotope": {
+                        "type": "string", 
+                        "xywh": "650;169;110;21"
+                    },
+                    "H1_PeakEnergy": {
+                        "suffix": "keV", 
+                        "type": "float", 
+                        "xywh": "157;194;130;21"
+                    },
+                    "H2_PeakEnergy": {
+                        "suffix": "keV", 
+                        "type": "float", 
+                        "xywh": "650;194;110;21"
+                    },
+                    "H1_FWHM": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "157;218;130;21"
+                    },
+                    "H2_FWHM": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "650;218;110;21"
+                    },
+                    "H1_uniformityUFOV": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "157;267;130;21"
+                    },
+                    "H1_uniformityCFOV": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "157;242;130;21"
+                    },                    
+                    "H2_uniformityUFOV": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "650;267;110;21"
+                    },
+                    "H2_uniformityCFOV": {
+                        "suffix": "%", 
+                        "type": "float", 
+                        "xywh": "650;242;110;21"
+                    },
+                    "H1_CountRate": {
+                        "suffix": "Kcts/sec", 
+                        "type": "float", 
+                        "xywh": "157;320;130;21"
+                    },
+                    "H2_CountRate": {
+                        "suffix": "Kcts/sec", 
+                        "type": "float", 
+                        "xywh": "650;320;110;21"
+                    },
+                    "H1_TotalCount": {
+                        "suffix": "Kcts", 
+                        "type": "float", 
+                        "xywh": "157;295;130;21"
+                    },
+                    "H2_TotalCount": {
+                        "suffix": "Kcts", 
+                        "type": "float", 
+                        "xywh": "650;295;110;21"
+                    }
+                }, 
+                "slicenr": -1
+            }
+        }
+    }, 
+    "cfgformat": "20180910", 
+    "comments": {
+        "author": "Jaap Groen, OLVG",  
+        "description": "config OCR/Generic for GE Discovery670 daily QC report",
+        "SeriesDescription": "ImageQC report", 
+        "version": "20180209"
+    }
+}

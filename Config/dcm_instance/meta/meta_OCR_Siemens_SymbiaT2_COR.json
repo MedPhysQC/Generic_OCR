@@ -1,0 +1,101 @@
+{
+  "results": {
+    "H2_COR": {
+      "display_name": "H2 COR",
+      "constraint_minlowhighmax": [
+        -2,
+        -1,
+        1,
+        2
+      ],
+      "units": "mm",
+      "description": "H2 COR",
+      "display_level": 2
+    },
+    "collimator": {
+      "display_name": "Collimator"
+    },
+    "H2_system_res": {
+      "display_name": "H2 System resolution at 20 cm",
+      "units": "mm"
+    },
+    "H1_axial_shift": {
+      "display_name": "H1 axial shift",
+      "constraint_minlowhighmax": [
+        -2,
+        -1,
+        1,
+        2
+      ],
+      "units": "mm",
+      "description": "H1 axial shift",
+      "display_level": 2
+    },
+    "H1_system_res": {
+      "display_name": "H1 System resolution at 20 cm",
+      "units": "mm"
+    },
+    "AcquisitionDateTime": {
+      "constraint_period": 25,
+      "display_name": "DateTime",
+      "units": "",
+      "description": "date and time of acquisition",
+      "display_level": 2
+    },
+    "H1_back_projection_angle": {
+      "display_name": "H1 Back projection angle",
+      "constraint_minlowhighmax": [
+        -0.2,
+        -0.1,
+        0.1,
+        0.2
+      ],
+      "units": "degrees",
+      "description": "H1 BPA",
+      "display_level": 2
+    },
+    "H2_back_projection_angle": {
+      "display_name": "H2 Back projection angle",
+      "constraint_minlowhighmax": [
+        -0.2,
+        -0.1,
+        0.1,
+        0.2
+      ],
+      "units": "degrees",
+      "description": "H2 BPA",
+      "display_level": 2
+    },
+    "H1_COR": {
+      "display_name": "H1 COR",
+      "constraint_minlowhighmax": [
+        -2,
+        -1,
+        1,
+        2
+      ],
+      "units": "mm",
+      "description": "H1 COR",
+      "display_level": 2
+    },
+    "H2_axial_shift": {
+      "display_name": "H2 axial shift",
+      "constraint_minlowhighmax": [
+        -2,
+        -1,
+        1,
+        2
+      ],
+      "units": "mm",
+      "description": "H2 axial shift",
+      "display_level": 2
+    }
+  },
+  "metaformat": "20180910",
+  "comments": {
+    "author": "Jaap Groen, OLVG",
+    "description": "config OCR/Generic for Siemens SymbiaT2 COR report",
+    "SeriesDescription": "Head Alignment Verification Save Screen",
+    "creator": "custom"
+  }
+}

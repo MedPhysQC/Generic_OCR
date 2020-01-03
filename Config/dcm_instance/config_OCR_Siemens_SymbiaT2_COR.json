@@ -1,0 +1,61 @@
+{
+    "actions": {
+        "acqdatetime": {
+            "filters": {}, 
+            "params": {}
+        }, 
+        "qc_series": {
+            "filters": {}, 
+            "params": {
+                "channel": "rgb",
+                "ocr_threshold":0,
+                "ocr_regions": {
+                    "H1_COR": {
+                        "type": "float", 
+                        "xywh": "861;151;101;27"
+                    },
+                    "H1_axial_shift": {
+                        "type": "float", 
+                        "xywh": "861;182;101;27"
+                    },
+                    "H1_back_projection_angle": {
+                        "type": "float", 
+                        "xywh": "861;214;101;27"
+                    },
+                    "H1_system_res": {
+                        "type": "float", 
+                        "xywh": "861;245;101;27"
+                    },
+                    "H2_COR": {
+                        "type": "float", 
+                        "xywh": "861;491;101;27"
+                    },
+                    "H2_axial_shift": {
+                        "type": "float", 
+                        "xywh": "861;522;101;27"
+                    },
+                    "H2_back_projection_angle": {
+                        "type": "float", 
+                        "xywh": "861;554;101;27"
+                    },
+                    "H2_system_res": {
+                        "type": "float", 
+                        "xywh": "861;585;101;27"
+                    },
+                    "collimator": {
+                        "type": "string", 
+                        "xywh": "143;100;300;27"
+                    }
+                }, 
+                "slicenr": -1
+            }
+        }
+    }, 
+    "cfgformat": "20180910", 
+    "comments": {
+        "author": "Jaap Groen, OLVG",  
+        "description": "config OCR/Generic for Siemens SymbiaT2 COR report",
+        "SeriesDescription": "Head Alignment Verification Save Screen", 
+        "version": "20180209"
+    }
+}

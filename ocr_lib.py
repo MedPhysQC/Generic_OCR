@@ -51,8 +51,7 @@ def getOCRTool():
     tool = tools[0]
     print("[ocr_lib] Using %s for OCR" % (tool.get_name()))
     return tool
-
-
+    
 def txt2type(txt, type, prefix='',suffix=''):
     """
     If prefix is defined, the length of the string is used to skip the first num characters.
