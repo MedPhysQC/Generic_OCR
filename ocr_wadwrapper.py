@@ -20,6 +20,7 @@
 #
 #
 # Changelog:
+#   20200508: dropping support for python2; dropping support for WAD-QC 1; toimage no longer exists in scipy.misc
 #   20180913: new format of config: ocr_regions = {name: {prefix:, suffix:, type:, xywh}}; 
 #             tesseract wants black text on white
 #   20180329: Changed "sum" value for rgb to "avg" and fixed implementation.
@@ -34,9 +35,8 @@
 # ln -s /home/nol/WAD/pyWADdemodata/US/US_AirReverberations/dicom_curve/ TestSet/StudyCurve/
 # ./ocr_wadwrapper.py -d TestSet/StudyEpiqCurve/ -c Config/ocr_philips_epiq.json -r results_epiq.json
 #
-from __future__ import print_function
 
-__version__ = '20180913'
+__version__ = '20200508'
 __author__ = 'aschilham'
 
 import os
@@ -50,8 +50,17 @@ except ImportError:
 
 import numpy as np
 import ocr_lib
-import scipy.misc
+try:
+    from scipy.misc import toimage
+except (ImportError, AttributeError) as e:
+    try:
+        from wad_qc.modulelibs.wadwrapper_lib import toimage as toimage
+    except (ImportError, AttributeError) as e:
+        msg = "Function 'toimage' cannot be found. Either downgrade scipy or upgrade WAD-QC."
+        raise AttributeError("{}: {}".format(msg, e))
+
 # sanity check: we need at least scipy 0.10.1 to avoid problems mixing PIL and Pillow
+import scipy
 scipy_version = [int(v) for v in scipy.__version__ .split('.')]
 if scipy_version[0] == 0:
     if scipy_version[1]<10 or (scipy_version[1] == 10 and scipy_version[1]<1):
@@ -183,7 +192,7 @@ def OCR(data, results, action):
     for name, region in regions.items():
         txt, part = ocr_lib.OCR(pixeldataIn, region['xywh'], ocr_zoom=ocr_zoom, ocr_threshold=ocr_threshold, transposed=False)
         if region['type'] == 'object':
-            im = scipy.misc.toimage(part) 
+            im = toimage(part) 
             fn = '%s.jpg'%name
             im.save(fn)
             results.addObject(name, fn)

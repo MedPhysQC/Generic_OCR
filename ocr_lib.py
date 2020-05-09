@@ -22,12 +22,13 @@ Take care to put the bounding box around only txt, and exclude other objects!
 On Ubuntu 16.04: apt install python-pyocr tesseract-ocr tesseract-ocr-eng
 
 Changelog:
+    20200421: add border
     20180914: tesseract wants black text on white
     20180731: fix error ValueError: assignment destination is read-only for part[part<ocr_threshold] = 0
     20171117: sync with US; prepare for non-transposed data
     20171116: fix scipy version 1.0
 """
-__version__ = '20180914'
+__version__ = '20200421'
 __author__ = 'aschilham'
 
 from PIL import Image
@@ -42,7 +43,6 @@ if scipy_version[0] == 0:
     if scipy_version[1]<10 or (scipy_version[1] == 10 and scipy_version[1]<1):
         raise RuntimeError("scipy version too old. Upgrade scipy to at least 0.10.1")
 
-
 def getOCRTool():
     # check if OCR tools tesseract or cuneiform are available
     tools = pyocr.get_available_tools()
@@ -51,7 +51,8 @@ def getOCRTool():
     tool = tools[0]
     print("[ocr_lib] Using %s for OCR" % (tool.get_name()))
     return tool
-    
+
+
 def txt2type(txt, type, prefix='',suffix=''):
     """
     If prefix is defined, the length of the string is used to skip the first num characters.
@@ -76,18 +77,36 @@ def txt2type(txt, type, prefix='',suffix=''):
         return (txt.lower() in ['1', 'true', 'y', 'yes'])
         
     # strip non-numeric characters from floating number
+    fixfloat = {
+        # some frequent problems
+        '0':['O', 'o'],
+        '1': ['l'],
+        '2': ['Z', 'z'],
+        '4': ['A'],
+        '5': ['S', 's'],
+        '7': ['/'],
+        '8': ['B'],
+        '9': ['Q', 'g'],
+    }
     if type.lower() == 'float':
+        #print("{}".format(txt))
         # first strip % and spaces and turn comma into period (without warning)
         txt = txt.replace('%','').replace(' ','').replace(',', '.')
+        for fv,svs in fixfloat.items():
+            for sv in svs:
+                txt = txt.replace(sv, fv)
+
         # next the other characters
         newtxt = re.sub(r'[^\d.]+', '', txt)
         if newtxt != txt:
             print(u"[ocr_lib] Warning: replaced value {} by {}".format(txt, newtxt).encode('utf8'))
             txt = newtxt
+
+        #print("{}".format(txt))
         return float(txt)
 
     
-def OCR(pixeldata, xywh, zpos=0, ocr_zoom=10, ocr_threshold=0, transposed=True):
+def OCR(pixeldata, xywh, zpos=0, ocr_zoom=10, ocr_threshold=0, ocr_border=0, transposed=True):
     """
     Use pyOCR which for OCR
     ul = upperleft pixel location [x,y]
@@ -147,6 +166,13 @@ def OCR(pixeldata, xywh, zpos=0, ocr_zoom=10, ocr_threshold=0, transposed=True):
     # 20180914: actually tesseract wants black text on white, so invert!
     maxval = np.max(part)
     part = maxval-part
+    
+    # 20200421: add border
+    if ocr_border>0:
+        dimy,dimx = np.shape(part)
+        part2 = np.full((dimy+2*ocr_border, dimx+2*ocr_border), 255, dtype=part.dtype)
+        part2[ocr_border:dimy+ocr_border,ocr_border:dimx+ocr_border] = part
+        part = part2
 
     txt = tool.image_to_string(Image.fromarray(part))
     return txt, part

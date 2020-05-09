@@ -1,54 +1,54 @@
 {
     "actions": {
         "acqdatetime": {
-            "filters": {}, 
+            "filters": {},
             "params": {}
-        }, 
+        },
         "qc_series": {
-            "filters": {}, 
+            "filters": {},
             "params": {
                 "ocr_regions": {
                     "MechIndex": {
-                        "prefix": "MI", 
-                        "type": "float", 
+                        "prefix": "MI",
+                        "type": "float",
                         "xywh": "913;22;80;25"
-                    }, 
+                    },
                     "TissueIndex": {
-                        "prefix": "TIS", 
-                        "type": "float", 
+                        "prefix": "TIS",
+                        "type": "float",
                         "xywh": "822;22;90;25"
                     }
                 }
             }
         }
-    }, 
-    "cfgformat": "20180910", 
+    },
+    "cfgformat": "20180910",
     "comments": {
-        "author": "Arnold Schilham, UMCU", 
-        "creator": "generate_config_json.py version 20180912", 
-        "description": "OCR/Generic for Philips Epiq", 
+        "author": "Arnold Schilham, UMCU",
+        "creator": "generate_config_json.py version 20180912",
+        "description": "OCR/Generic for Philips Epiq",
         "usage": [
-            "  \"OCR_xxx:prefix\": \"mm\" # text in bounding box of OCR_xxx starts with this and this should be stripped", 
-            "  \"OCR_xxx:suffix\": \"mm\" # text in bounding box of OCR_xxx ends with this and this should be stripped", 
+            "  \"OCR_xxx:prefix\": \"mm\" # text in bounding box of OCR_xxx starts with this and this should be stripped",
+            "  \"OCR_xxx:suffix\": \"mm\" # text in bounding box of OCR_xxx ends with this and this should be stripped",
             "\n"
-        ], 
+        ],
         "version": "20160901"
-    }, 
+    },
     "info": {
         "acqdatetime": {
             "params": {}
-        }, 
+        },
         "qc_series": {
             "params": {
                 "ocr_regions": {
                     "MechIndex": {
-                        "prefix": "text in bounding box starts with this", 
-                        "type": "contents (minus prefix) of bounding box should be of this type", 
+                        "prefix": "text in bounding box starts with this",
+                        "type": "contents (minus prefix) of bounding box should be of this type",
                         "xywh": "x0;y0;width;height of bounding box"
-                    }, 
+                    },
                     "TissueIndex": {
-                        "prefix": "text in bounding box starts with this", 
-                        "type": "contents (minus prefix) of bounding box should be of this type", 
+                        "prefix": "text in bounding box starts with this",
+                        "type": "contents (minus prefix) of bounding box should be of this type",
                         "xywh": "x0;y0;width;height of bounding box"
                     }
                 }
