@@ -7,6 +7,7 @@
         "qc_series": {
             "filters": {},
             "params": {
+                "channel": 0,
                 "ocr_regions": {
                     "Area_L1": {
                         "type": "float",
@@ -91,6 +92,7 @@
         },
         "qc_series": {
             "params": {
+                "channel": "convert to RGB by using channel number 0,1,2 or \"avg\", or \"rgb\" (2)",
                 "ocr_regions": {
                     "Area_L1": {
                         "type": "contents of bounding box of Area_L1 should be of this type",
