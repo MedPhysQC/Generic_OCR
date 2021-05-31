@@ -20,6 +20,7 @@
 #
 #
 # Changelog:
+#   20210531: added support for testing
 #   20200508: dropping support for python2; dropping support for WAD-QC 1; toimage no longer exists in scipy.misc
 #   20180913: new format of config: ocr_regions = {name: {prefix:, suffix:, type:, xywh}}; 
 #             tesseract wants black text on white
@@ -36,7 +37,7 @@
 # ./ocr_wadwrapper.py -d TestSet/StudyEpiqCurve/ -c Config/ocr_philips_epiq.json -r results_epiq.json
 #
 
-__version__ = '20200508'
+__version__ = '20210531'
 __author__ = 'aschilham'
 
 import os
@@ -157,7 +158,7 @@ def readdcm(inputfile, channel, slicenr):
     raise ValueError("Data has {} channels. Invalid selected channel {}! Should be a number or one of 'avg', 'rgb'.".format(channels, channel))
     
     
-def OCR(data, results, action):
+def OCR(data, results, action, override={}):
     """
     Use pyOCR which for OCR
     """
@@ -165,6 +166,10 @@ def OCR(data, results, action):
         params = action['params']
     except KeyError:
         params = {}
+
+    # overrides from test scripts
+    for k,v in override.items():
+        params[k] = v
 
     channel = params.get('channel', 'avg')
     slicenr = params.get('slicenr', -1)
@@ -193,18 +198,28 @@ def OCR(data, results, action):
         txt, part = ocr_lib.OCR(pixeldataIn, region['xywh'], ocr_zoom=ocr_zoom, ocr_threshold=ocr_threshold, transposed=False)
         if region['type'] == 'object':
             im = toimage(part) 
-            fn = '%s.jpg'%name
+            prefix = results._out_path.split(".json")[0]
+            fn = '{}_{}.jpg'.format(prefix, name) 
+            #fn = '%s.jpg'%name
             im.save(fn)
             results.addObject(name, fn)
-            
         else:
-            value = ocr_lib.txt2type(txt, region['type'], region['prefix'],region['suffix'])
-            if region['type'] == 'float':
-                results.addFloat(name, value)
-            elif region['type'] == 'string':
-                results.addString(name, value)
-            elif region['type'] == 'bool':
-                results.addBool(name, value)
+            try:
+                value = ocr_lib.txt2type(txt, region['type'], region['prefix'],region['suffix'])
+                if region['type'] == 'float':
+                    results.addFloat(name, value)
+                elif region['type'] == 'string':
+                    results.addString(name, value)
+                elif region['type'] == 'bool':
+                    results.addBool(name, value)
+            except:
+                # dump image, but still raise error
+                im = toimage(part) 
+                prefix = results._out_path.split(".json")[0]
+                fn = '{}_{}_Error.jpg'.format(prefix, name) 
+                #fn = '%s.jpg'%name
+                im.save(fn)
+                raise
 
 def acqdatetime_series(data, results, action):
     """
@@ -225,7 +240,10 @@ def acqdatetime_series(data, results, action):
 
     results.addDateTime('AcquisitionDateTime', dt) 
 
-if __name__ == "__main__":
+def main(override={}):
+    """
+    override from testting scripts
+    """
     data, results, config = pyWADinput()
 
     # read runtime parameters for module
@@ -233,8 +251,12 @@ if __name__ == "__main__":
         if name == 'acqdatetime':
             acqdatetime_series(data, results, action)
         elif name == 'qc_series':
-            OCR(data, results, action)
+            OCR(data, results, action, override)
 
     #results.limits["minlowhighmax"]["mydynamicresult"] = [1,2,3,4]
 
     results.write()
+
+if __name__ == "__main__":
+    # main in separate function to be called by n13hough_tester
+    main()

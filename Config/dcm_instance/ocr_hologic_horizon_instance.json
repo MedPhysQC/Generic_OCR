@@ -1,0 +1,160 @@
+{
+    "actions": {
+        "acqdatetime": {
+            "filters": {},
+            "params": {}
+        },
+        "qc_series": {
+            "filters": {},
+            "params": {
+                "ocr_regions": {
+                    "Area_L1": {
+                        "type": "float",
+                        "xywh": "485;710;67;22"
+                    },
+                    "Area_L2": {
+                        "type": "float",
+                        "xywh": "485;743;67;22"
+                    },
+                    "Area_L3": {
+                        "type": "float",
+                        "xywh": "485;776;67;22"
+                    },
+                    "Area_L4": {
+                        "type": "float",
+                        "xywh": "485;809;67;22"
+                    },
+                    "Area_Total": {
+                        "type": "float",
+                        "xywh": "485;842;67;22"
+                    },
+                    "BMC_L1": {
+                        "type": "float",
+                        "xywh": "566;710;67;22"
+                    },
+                    "BMC_L2": {
+                        "type": "float",
+                        "xywh": "566;743;67;22"
+                    },
+                    "BMC_L3": {
+                        "type": "float",
+                        "xywh": "566;776;67;22"
+                    },
+                    "BMC_L4": {
+                        "type": "float",
+                        "xywh": "566;809;67;22"
+                    },
+                    "BMC_Total": {
+                        "type": "float",
+                        "xywh": "566;842;67;22"
+                    },
+                    "BMD_L1": {
+                        "type": "float",
+                        "xywh": "664;710;67;22"
+                    },
+                    "BMD_L2": {
+                        "type": "float",
+                        "xywh": "664;743;67;22"
+                    },
+                    "BMD_L3": {
+                        "type": "float",
+                        "xywh": "664;776;67;22"
+                    },
+                    "BMD_L4": {
+                        "type": "float",
+                        "xywh": "664;809;67;22"
+                    },
+                    "BMD_Total": {
+                        "type": "float",
+                        "xywh": "664;842;67;22"
+                    }
+                },
+                "ocr_zoom": 3
+            }
+        }
+    },
+    "cfgformat": "20180910",
+    "comments": {
+        "author": "Arnold Schilham, UMCU",
+        "creator": "generate_config_json.py version 20180912",
+        "description": "OCR/Generic for Hologic Horizon",
+        "usage": [
+            "  \"OCR_xxx:prefix\": \"mm\" # text in bounding box of OCR_xxx starts with this and this should be stripped",
+            "  \"OCR_xxx:suffix\": \"mm\" # text in bounding box of OCR_xxx ends with this and this should be stripped",
+            "\n"
+        ],
+        "version": "20210531"
+    },
+    "info": {
+        "acqdatetime": {
+            "params": {}
+        },
+        "qc_series": {
+            "params": {
+                "ocr_regions": {
+                    "Area_L1": {
+                        "type": "contents of bounding box of Area_L1 should be of this type",
+                        "xywh": "bounding box of Area_L1"
+                    },
+                    "Area_L2": {
+                        "type": "contents of bounding box of Area_L2 should be of this type",
+                        "xywh": "bounding box of Area_L2"
+                    },
+                    "Area_L3": {
+                        "type": "contents of bounding box of Area_L3 should be of this type",
+                        "xywh": "bounding box of Area_L3"
+                    },
+                    "Area_L4": {
+                        "type": "contents of bounding box of Area_L4 should be of this type",
+                        "xywh": "bounding box of Area_L4"
+                    },
+                    "Area_Total": {
+                        "type": "contents of bounding box of Area_Total should be of this type",
+                        "xywh": "bounding box of Area_Total"
+                    },
+                    "BMC_L1": {
+                        "type": "contents of bounding box of BMC_L1 should be of this type",
+                        "xywh": "bounding box of BMC_L1"
+                    },
+                    "BMC_L2": {
+                        "type": "contents of bounding box of BMC_L2 should be of this type",
+                        "xywh": "bounding box of BMC_L2"
+                    },
+                    "BMC_L3": {
+                        "type": "contents of bounding box of BMC_L3 should be of this type",
+                        "xywh": "bounding box of BMC_L3"
+                    },
+                    "BMC_L4": {
+                        "type": "contents of bounding box of BMC_L4 should be of this type",
+                        "xywh": "bounding box of BMC_L4"
+                    },
+                    "BMC_Total": {
+                        "type": "contents of bounding box of BMC_Total should be of this type",
+                        "xywh": "bounding box of BMC_Total"
+                    },
+                    "BMD_L1": {
+                        "type": "contents of bounding box of BMD_L1 should be of this type",
+                        "xywh": "bounding box of BMD_L1"
+                    },
+                    "BMD_L2": {
+                        "type": "contents of bounding box of BMD_L2 should be of this type",
+                        "xywh": "bounding box of BMD_L2"
+                    },
+                    "BMD_L3": {
+                        "type": "contents of bounding box of BMD_L3 should be of this type",
+                        "xywh": "bounding box of BMD_L3"
+                    },
+                    "BMD_L4": {
+                        "type": "contents of bounding box of BMD_L4 should be of this type",
+                        "xywh": "bounding box of BMD_L4"
+                    },
+                    "BMD_Total": {
+                        "type": "contents of bounding box of BMD_Total should be of this type",
+                        "xywh": "bounding box of BMD_Total"
+                    }
+                },
+                "ocr_zoom": "zoom factor before ocr analysis (10)"
+            }
+        }
+    }
+}
