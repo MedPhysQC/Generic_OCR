@@ -11,12 +11,12 @@
                     "MechIndex": {
                         "prefix": "MI",
                         "type": "float",
-                        "xywh": "913;24;80;25"
+                        "xywh": "913;24;80;23"
                     },
                     "TissueIndex": {
                         "prefix": "TIS",
                         "type": "float",
-                        "xywh": "822;24;90;25"
+                        "xywh": "822;24;90;23"
                     }
                 }
             }
