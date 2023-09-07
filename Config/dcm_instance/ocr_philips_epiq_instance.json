@@ -11,12 +11,12 @@
                     "MechIndex": {
                         "prefix": "MI",
                         "type": "float",
-                        "xywh": "913;22;80;25"
+                        "xywh": "913;24;80;25"
                     },
                     "TissueIndex": {
                         "prefix": "TIS",
                         "type": "float",
-                        "xywh": "822;22;90;25"
+                        "xywh": "822;24;90;25"
                     }
                 }
             }
@@ -32,7 +32,7 @@
             "  \"OCR_xxx:suffix\": \"mm\" # text in bounding box of OCR_xxx ends with this and this should be stripped",
             "\n"
         ],
-        "version": "20160901"
+        "version": "20230907"
     },
     "info": {
         "acqdatetime": {
